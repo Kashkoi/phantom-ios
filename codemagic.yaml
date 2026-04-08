@@ -29,11 +29,6 @@ workflows:
       - name: Get Flutter packages
         script: flutter pub get
 
-      - name: Install CocoaPods
-        script: |
-          cd ios
-          pod install
-
       - name: Set up code signing
         script: |
           mkdir -p ~/private_keys
@@ -90,9 +85,6 @@ workflows:
     scripts:
       - name: Get packages
         script: flutter pub get
-
-      - name: Install pods
-        script: cd ios && pod install
 
       - name: Set up signing
         script: |
