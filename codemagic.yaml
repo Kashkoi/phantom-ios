@@ -7,7 +7,7 @@ workflows:
     environment:
       flutter: stable
       groups:
-        - ios_signing
+        - app_store_connect
       vars:
         BUNDLE_ID: "com.alphainception.phantom"
         APP_NAME: Phantom
@@ -83,7 +83,7 @@ workflows:
     environment:
       flutter: stable
       groups:
-        - ios_signing
+        - app_store_connect
       vars:
         BUNDLE_ID: "com.alphainception.phantom"
 
