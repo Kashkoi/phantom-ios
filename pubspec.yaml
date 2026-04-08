@@ -1,0 +1,78 @@
+name: phantom
+description: Phantom — Social Media Agent Control Center
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Navigation
+  go_router: ^14.2.0
+
+  # HTTP & API
+  dio: ^5.5.0
+  json_annotation: ^4.9.0
+
+  # State management
+  flutter_riverpod: ^2.5.0
+
+  # Auth & Security (shared_preferences for token cache; local_auth for iOS biometrics)
+  local_auth: ^2.2.0
+
+  # Media
+  # photo_manager and image_gallery_saver are iOS-only — add back for Codemagic iOS builds
+  cached_network_image: ^3.3.1
+  video_player: ^2.9.0
+
+  # Folder watching (Windows desktop)
+  watcher: ^1.1.0
+  file_picker: ^8.0.0
+
+  # Charts
+  fl_chart: ^0.68.0
+
+  # Push notifications — add firebase_core and firebase_messaging
+  # back when building iOS only via Codemagic (breaks Windows desktop build)
+
+  # Storage
+  shared_preferences: ^2.3.0
+
+  # UI utilities
+  shimmer: ^3.0.0
+  pull_to_refresh: ^2.0.0
+  fluttertoast: ^8.2.8
+  url_launcher: ^6.3.0
+  intl: ^0.19.0
+  timeago: ^3.6.1
+  patentinvest_beta_sdk:
+    git:
+      url: https://github.com/Kashkoi/patentinvest-beta-sdk.git
+      ref: main
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.11
+  json_serializable: ^6.8.0
+  msix: ^3.16.0
+
+msix_config:
+  display_name: Phantom
+  publisher_display_name: Alpha Inception LLC
+  identity_name: com.alphainception.phantom
+  msix_version: 1.0.0.0
+  capabilities:
+    - internetClient
+    - privateNetworkClientServer
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
