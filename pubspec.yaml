@@ -55,6 +55,11 @@ dependencies:
       url: https://github.com/Kashkoi/patentinvest-beta-sdk.git
       ref: main
 
+dependency_overrides:
+  # Pin permission_handler_apple to 9.3.x — version 9.4.5 has a CocoaPods
+  # podspec path issue where Permission-Camera.podspec can't be found.
+  permission_handler_apple: ">=9.3.0 <9.4.0"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
