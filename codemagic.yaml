@@ -43,29 +43,6 @@ workflows:
           keychain add-certificates
           xcode-project use-profiles
 
-      - name: Debug - find where 9.4.5 path comes from
-        script: |
-          echo "=== PUB_CACHE env ==="
-          echo "${PUB_CACHE:-not set}"
-          echo "=== .flutter-plugins-dependencies ==="
-          cat .flutter-plugins-dependencies 2>/dev/null || echo "not found"
-          echo "=== camera_avfoundation podspec ==="
-          find /Users/builder/programs/flutter/.pub-cache ~/.pub-cache -name "camera_avfoundation.podspec" 2>/dev/null | while read f; do
-            echo "--- $f ---"
-            cat "$f"
-          done
-          echo "=== permission_handler_apple versions in ALL caches ==="
-          find /Users/builder/programs/flutter/.pub-cache ~/.pub-cache -maxdepth 5 -type d -name "permission_handler_apple-*" 2>/dev/null
-          echo "=== ios/Podfile ==="
-          cat ios/Podfile 2>/dev/null || echo "not found"
-
-      - name: Remove broken permission_handler_apple from pub cache
-        script: |
-          rm -rf /Users/builder/programs/flutter/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5 || true
-          rm -rf ~/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5 || true
-          rm -f ios/Podfile.lock || true
-          flutter pub get
-
       - name: Flutter analyze
         script: flutter analyze --no-fatal-infos || true
 
