@@ -31,11 +31,6 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  # Permission handler pods — pinned to 9.3.1 via HOME pub-cache
-  # (9.4.x removed the sub-podspec structure; flutter_root cache differs from HOME cache)
-  pod 'Permission-Photos',     :path => "#{ENV['HOME']}/.pub-cache/hosted/pub.dev/permission_handler_apple-9.3.1/ios/Classes/resources"
-  pod 'Permission-Camera',     :path => "#{ENV['HOME']}/.pub-cache/hosted/pub.dev/permission_handler_apple-9.3.1/ios/Classes/resources"
-  pod 'Permission-Microphone', :path => "#{ENV['HOME']}/.pub-cache/hosted/pub.dev/permission_handler_apple-9.3.1/ios/Classes/resources"
 end
 
 post_install do |installer|
