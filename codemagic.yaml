@@ -43,6 +43,13 @@ workflows:
           keychain add-certificates
           xcode-project use-profiles
 
+      - name: Remove broken permission_handler_apple from pub cache
+        script: |
+          rm -rf /Users/builder/programs/flutter/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5 || true
+          rm -rf ~/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5 || true
+          rm -f ios/Podfile.lock || true
+          flutter pub get
+
       - name: Flutter analyze
         script: flutter analyze --no-fatal-infos || true
 
